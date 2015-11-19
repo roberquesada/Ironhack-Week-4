@@ -1,0 +1,22 @@
+<%= flash_message %>
+
+<h1>List of entries</h1>
+<section>
+  <% @entries.each do |entry|  %>
+    <article>
+      <ul>
+        <li>Hours: <%= entry.hours %></li>
+        <li>Minutes: <%= entry.minutes %></li>
+        <li>Content: <%= entry.comments %></li>
+        <li><%= link_to('Edit', edit_project_entry_path(@project, entry)) %></li>
+        <li><%= link_to('Destroy',  project_entry_path(@project, entry),  method: :delete, data: { confirm: 'Are you sure?' }) %></li>
+      </ul>
+    </article>
+  <% end %>
+  <p>Total hours worked in month <%= current_month_hours_for_project(@project, @date) %></p>
+</section>
+
+<%= link_to('Back', projects_path) %>
+<%= link_to('Create', new_project_entry_path(@project)) %>
+<!-- <a href="/projects/<%= @prev_project %>/entries">Prev Project</a>
+<a href="/projects/<%= @next_project %>/entries">Next Project</a> -->

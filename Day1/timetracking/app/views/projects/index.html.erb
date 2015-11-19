@@ -1,0 +1,13 @@
+
+<h1>List of projects</h1>
+<ul>
+  <% @projects.reverse.each do |project|  %>
+    <li>
+      <% if !project.description.blank? %>
+        <%= link_to("#{project.name} - #{project.description}", project_entries_path(project)) %>
+      <% else %>
+        <%= link_to("#{project.name}", project_entries_path(project)) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

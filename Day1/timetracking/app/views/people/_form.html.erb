@@ -1,0 +1,19 @@
+<%= flash_message %>
+
+<% if @person.errors.any?  %>
+  <ul>
+    <% @person.errors.full_messages.each do |error_msg| %>
+    <li><%= error_msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@person] do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <%= f.submit 'Save' %>
+
+
+<% end %>

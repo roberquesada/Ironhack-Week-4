@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timetracking</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header id="wrapper">
+    <header>
+      Time tracking tool
+    </header>
+  </header>
+
+  <%= yield %>
+
+  <footer>
+    Ironhack - Rails introduction
+  </footer>
+
+</body>
+</html>

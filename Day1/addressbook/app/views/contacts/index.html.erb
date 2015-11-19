@@ -1,0 +1,12 @@
+<section>
+  <% @contacts.each do |contact| %>
+    <article>
+      <ul>
+        <li>Name: <%= contact.name %></li>
+        <li>Address: <%= contact.address %></li>
+        <li>Phone: <%= contact.phone %></li>
+        <li>Email: <%= contact.email %></li>
+      </ul>
+    </article>
+  <% end %>
+</section>
