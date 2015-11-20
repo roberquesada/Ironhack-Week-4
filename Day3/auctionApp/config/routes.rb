@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  resources :user, only: [:create, :new, :show, :destroy] do
+    resources :products, only: [:index, :show, :create , :destroy, :new]
+  end
+
+    resources :products, only: [:index, :show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
