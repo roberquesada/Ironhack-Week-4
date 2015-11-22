@@ -23,6 +23,9 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @bids = @product.bids.all
+    @bid_winner = @product.highest_bid
+    @new_bid = @product.bids.new
   end
 
   private

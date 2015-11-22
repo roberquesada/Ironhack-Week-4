@@ -3,4 +3,13 @@ class Product < ActiveRecord::Base
   has_many :bids
 
   validates :title, :description, :deadline, presence: true
+
+  def highest_bid
+    bids.order('amount DESC').first
+  end
+
+  def is_deadline_reached?
+    DateTime.now > deadline
+  end
+
 end

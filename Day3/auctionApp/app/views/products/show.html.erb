@@ -3,4 +3,33 @@
 <section>
   <p>Description: <%= @product.description %></p>
   <p>Deadline: <%= @product.deadline %></p>
+
+
+<% @bids.each do |bid| %>
+  <article>
+    <%= bid.amount %>
+    <%= bid.user.name %>
+  </article>
+<% end %>
 </section>
+
+<% if( @product.is_deadline_reached? ) %>
+  <p>Bid winner</p>
+  <p><%= @bid_winner.user.name %> with total amount <%= @bid_winner.amount %></p>
+<% else %>
+  <%= form_for [@product, @new_bid] do |f| %>
+
+    <div>
+      <label for="user_email">Email</label>
+      <input type="email" name="user[email]" id="user_email">
+    </div>
+
+    <div>
+      <%= f.label(:amount) %>
+      <%= f.text_field(:amount) %>
+    </div>
+
+    <%= f.submit('Add bid') %>
+
+  <% end %>
+<% end %>
