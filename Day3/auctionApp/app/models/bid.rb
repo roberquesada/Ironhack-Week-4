@@ -7,5 +7,5 @@ class Bid < ActiveRecord::Base
     user = User.find_by(email: user_email)
     params[:bid][:user_id] = user.id
   end
-  
+
 end

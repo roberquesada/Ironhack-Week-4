@@ -22,8 +22,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
-    @bids = @product.bids.all
+    @product = Product.find_by(id: params[:product_id]) || Product.find_by(id: params[:id])
+    @bids = @product.get_all_bids
     @bid_winner = @product.highest_bid
     @new_bid = @product.bids.new
   end
@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :deadline)
+    params.require(:product).permit(:title, :description, :deadline, :min_bid)
   end
 
 end

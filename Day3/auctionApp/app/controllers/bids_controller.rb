@@ -4,7 +4,8 @@ class BidsController < ApplicationController
     @product = Product.find(params[:product_id])
     @bid = @product.bids.new(bid_params)
 
-    if @bid.save
+    if params[:bid][:amount].to_f > @product.min_bid  && @bid.save
+      @product.update(min_bid: params[:bid][:amount].to_f)
       redirect_to action: 'show', controller: 'products', id: @product
     else
       render 'products/show'
